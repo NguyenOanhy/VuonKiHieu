@@ -4,7 +4,6 @@ import { Animal, Nature, Emotion, Color, Family, Basic,} from "./components";
 import { Library, Private, Contact } from "./containers/private";
 import { Routes, Route, useParams } from "react-router-dom";
 import path from "./utils/path";
-import { Private} from "./containers/private";
 import Video from "./components/Video";
  
 const topicList = ["Animal", "Nature", "Emotion", "Color", "Family", "Basic", ];
