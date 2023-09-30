@@ -10,7 +10,7 @@ const Public = () => {
       <div className='z-40'>
         <Header />
       </div>
-      <div className='w-[232px] flex-none'>
+      <div className='w-[240px] flex-none'>
         <SidebarLeft />
       </div>
       <div className='flex-auto mt-16'>

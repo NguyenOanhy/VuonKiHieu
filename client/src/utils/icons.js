@@ -5,7 +5,7 @@ import {PiTreeStructure, PiSealQuestion} from 'react-icons/pi'
 import {BsChatRightDots} from 'react-icons/bs'
 import {HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi'
 import {MdOutlineDriveFileRenameOutline, MdDriveFileRenameOutline} from 'react-icons/md'
-import {VscLibrary} from 'react-icons/vsc'
+import {SlSocialStumbleupon} from 'react-icons/sl'
 import {TiSortAlphabetically} from 'react-icons/ti'
 import {LuContact} from 'react-icons/lu'
 import {CgMail} from 'react-icons/cg'
@@ -21,7 +21,7 @@ const icons = {
     PiTreeStructure,
     AiOutlineQuestionCircle,
     BsChatRightDots,
-    VscLibrary,
+    SlSocialStumbleupon,
     HiArrowNarrowLeft, 
     HiArrowNarrowRight,
     FiSearch,

@@ -10,7 +10,7 @@ const Private = () => {
       <div className='z-40'>
         <Header isLoggedIn/>
       </div>
-      <div className='w-[232px] flex-none'>
+      <div className='w-[240px] flex-none'>
         <SidebarLeft isLoggedIn/>
       </div>
       <div className='flex-auto mt-16'>
