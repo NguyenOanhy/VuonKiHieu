@@ -38,7 +38,7 @@ export default function App() {
             //... get details
             {topicList.map((selectedTopic) => {
               return (
-                <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video />} />
+                <Route key={selectedTopic} path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video topic={selectedTopic}/>} />
               );
             })}
 
