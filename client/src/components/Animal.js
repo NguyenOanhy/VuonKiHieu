@@ -1,15 +1,15 @@
-
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const Animal =() =>{
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const {topic} = useParams();
   const [animals, setAnimals] = useState([])
 
   useEffect(() => {
     getAnimals()
-  }, [])
+  }, [topic])
 
   function getAnimals() {
     const animalRef = collection(db, 'Animal')
@@ -23,6 +23,7 @@ const Animal =() =>{
       })
       .catch(error => console.log(error.message))
   }
+
   const handleItemClick = async (animal) => {
     try {
      // Xử lý khi người dùng nhấp vào ô
@@ -30,7 +31,7 @@ const Animal =() =>{
       // console.log('URL của hình ảnh:', imageUrl);
       console.log(`Bạn đã nhấp vào mục: ${animal.data.name}`);
       // Thêm xử lý tùy ý tại đây
-      navigate(`/topic/${animal.path}`);
+      navigate(`/topic/animal/${animal.id}`);
       
     } catch (error) {
        console.error('Lỗi khi lấy URL hình ảnh:', error);
@@ -59,6 +60,8 @@ const Animal =() =>{
             </div>
         ))}
     </div> 
+
+    
     // <div>
     //   <h4>ListAnimals</h4>
     //   <ul>
