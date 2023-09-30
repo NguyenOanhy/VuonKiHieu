@@ -1,9 +1,14 @@
-import React from 'react'
+import { ChakraProvider, theme } from "@chakra-ui/react";
+import Chat from '../../components/ChatComponent/Chat';
 
 const ChatBot = () => {
   return (
-    <div>ChatBot</div>
-  )
+    <div>
+      <ChakraProvider theme={theme}>
+        <Chat />
+      </ChakraProvider>
+    </div>
+  );
 }
 
-export default ChatBot
+export default ChatBot;
