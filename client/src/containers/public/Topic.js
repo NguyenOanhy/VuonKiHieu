@@ -56,7 +56,7 @@ const Topic = ({ isLoggedIn }) => {
           {topic.map((oneTopic, index) => (
             <div 
               key={index} 
-              className="bg-neutral-100 outline outline-2 outline-gray-300 shadow-xl p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
+              className="outline outline-2 outline-gray-300 shadow-xl p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
               onClick={() => handleItemClick(oneTopic)} 
             >
               <div className="flex h-56 " 

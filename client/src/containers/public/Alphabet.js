@@ -18,6 +18,7 @@ const Alphabet =() =>{
           id: doc.id,
         }))
         setAlphabets(Alphabets) 
+        console.log(Alphabet)
       })
       .catch(error => console.log(error.message))
   }
@@ -29,7 +30,7 @@ const Alphabet =() =>{
           {Alphabets.map(Alphabet => (
             <div 
               key={Alphabet.id} 
-              className="bg-neutral-100 outline outline-2 outline-gray-300 shadow-xl p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
+              className="outline outline-2 outline-gray-300 shadow-xl p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
             >
               <div className="flex h-80 bg-contain" 
               style = {{ 
