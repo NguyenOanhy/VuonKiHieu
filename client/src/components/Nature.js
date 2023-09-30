@@ -28,7 +28,6 @@ const Nature =() =>{
         try {
         // Xử lý khi người dùng nhấp vào ô
         // const imageUrl = await getImageFromFirebase('images', '7.jpg');
-        // console.log('URL của hình ảnh:', imageUrl);
         console.log(`Bạn đã nhấp vào mục: ${nature.data.name}`);
         // Thêm xử lý tùy ý tại đây
         navigate(`/topic/nature/${nature.id}`);
