@@ -9,7 +9,7 @@ const Video = () => {
       async function fetchVideo() {
         try {
           // Gọi hàm getVideoFromFirebase để lấy URL của video
-          const url = await getDocumentById('dog', 'Animal');
+          const url = await getDocumentById('dog', 'Animal').videoUrl;
           console.log(url)
           // Set URL vào state
           setVideoUrl(url);

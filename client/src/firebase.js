@@ -58,9 +58,9 @@ const getDocumentById = async (documentId, dbName) => {
 
     if (documentSnapshot.exists()) {
       const data = documentSnapshot.data();
-      console.log(data.videoUrl);
+      console.log(data);
       console.log("Succesfully get document", documentId);
-      return data.videoUrl;
+      return data;
     } else {
       console.log("Document not found");
       return null;
