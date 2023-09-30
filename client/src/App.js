@@ -27,7 +27,7 @@ export default function App() {
             <Route path={path.QUIZ} element={<Quiz />} />
             <Route path={path.ALPHABET} element={<Alphabet />}> 
             </Route>
-            //... get topic
+           
             {topicList.map((selectedTopic, index) => {
               const TopicComponent = getTopicComponent(selectedTopic);
               return (
@@ -35,10 +35,10 @@ export default function App() {
               );
             })}
 
-            //... get details
+          
             {topicList.map((selectedTopic) => {
               return (
-                <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video />} />
+                <Route key={selectedTopic} path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video topic={selectedTopic}/>} />
               );
             })}
 
@@ -47,7 +47,7 @@ export default function App() {
           <Route path={path.FORGOTPW} element={<Forgotpassword/>} />
           <Route path={path.SIGNUP} element={<Signup/>} />
           <Route path={path.PRIVATE} element={<Private/>}>
-          //... get topic
+          
             {topicList.map((selectedTopic, index) => {
               const TopicComponent = getTopicComponent(selectedTopic);
               return (
@@ -55,7 +55,7 @@ export default function App() {
               );
             })}
 
-            //... get details
+          
             {topicList.map((selectedTopic) => {
               return (
                 <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video />} />
