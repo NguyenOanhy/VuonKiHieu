@@ -31,7 +31,7 @@ export default function App() {
             {topicList.map((selectedTopic, index) => {
               const TopicComponent = getTopicComponent(selectedTopic);
               return (
-                <Route key={index} path={`${path.TOPIC}/${selectedTopic}`} element={<TopicComponent />}/>
+                <Route key={index} path={`${path.TOPIC}/${selectedTopic}`} element={<TopicComponent/>}/>
               );
             })}
 
@@ -51,14 +51,14 @@ export default function App() {
             {topicList.map((selectedTopic, index) => {
               const TopicComponent = getTopicComponent(selectedTopic);
               return (
-                <Route key={index} path={`${path.TOPIC}/${selectedTopic}`} element={<TopicComponent />}/>
+                <Route key={index} path={`${path.TOPIC}/${selectedTopic}`} element={<TopicComponent isLoggedIn/>}/>
               );
             })}
 
           
             {topicList.map((selectedTopic) => {
               return (
-                <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video />} />
+                <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video topic={selectedTopic}/>} />
               );
             })}
             <Route path={path.HOME} element={<Home isLoggedIn/>} />
