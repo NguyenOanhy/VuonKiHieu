@@ -1,54 +1,66 @@
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase';
+import { useNavigate, useParams } from 'react-router-dom';
 const Basic =() =>{
-  const handleItemClick = (selectedTopic) => {
-      // Xử lý khi người dùng nhấp vào ô
-      console.log(`Bạn đã nhấp vào mục: ${selectedTopic.name}`);
-      // Thêm xử lý tùy ý tại đây
+    const navigate = useNavigate();
+    const {topic} = useParams();
+    const [basics, setBasics] = useState([])
+
+    useEffect(() => {
+        getBasics()
+    }, [topic])
+
+    function getBasics() {
+        const basicRef = collection(db, 'Basic')
+        getDocs(basicRef)
+        .then(Response => {
+            const basics = Response.docs.map(doc => ({
+            data: doc.data(),
+            id: doc.id,
+            }))
+            setBasics(basics) 
+        })
+        .catch(error => console.log(error.message))
+    }
+
+    const handleItemClick = async (basic) => {
+        try {
+        // Xử lý khi người dùng nhấp vào ô
+        // const imageUrl = await getImageFromFirebase('images', '7.jpg');
+        // console.log('URL của hình ảnh:', imageUrl);
+        console.log(`Bạn đã nhấp vào mục: ${basic.data.name}`);
+        // Thêm xử lý tùy ý tại đây
+        navigate(`/topic/basic/${basic.id}`);
+        
+        } catch (error) {
+        console.error('Lỗi khi lấy URL hình ảnh:', error);
+        }
     };
-
-  const list = [
-      {
-          name: '',
-          imageUrl: '',
-          
-      },
-      {
-          name: '',
-          imageUrl: '',
-      },
-      {
-          name: '',
-          imageUrl: '',
-      },
-      {
-          name: '',
-          imageUrl: '',
-      },
-  ]
-  return(
-      <div className="p-10 grid grid-cols-4 gap-10 md:gap-6">
-          {list.map((oneOfBasic, index) => (
-          <div
-              key={index}
-              className="border p-2 rounded-xl outline outline-1 cursor-pointer transition-transform hover:scale-105" 
-              onClick={() => handleItemClick(oneOfBasic)} // Gọi hàm xử lý khi người dùng nhấp vào ô
-          >
-              <div
-              className="flex h-72"
-              style={{
-                  backgroundImage: `url(${oneOfBasic.imageUrl})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-              }}
-              ></div>
-              <div className="text-lg font-semibold mt-2 text-center">
-              {oneOfBasic.name}
-              </div>
-          </div>
-          ))}
-      </div>
-
-  )
+    return (
+        <div className="p-6 grid grid-cols-4 gap-6 md:gap-4">
+            {basics.map(basic => (
+                <div 
+                key={basic.id} 
+                className="outline outline-2 p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
+                onClick={() => handleItemClick(basic)} 
+                >
+                <div className="flex h-56 " 
+                style = {{ 
+                    backgroundImage: `url(${basic.data.imageUrl})`, 
+                    backgroundSize: 'cover', 
+                    backgroundPosition: 'center', 
+                    backgroundRepeat: 'no-repeat', 
+                    }}
+                ></div>
+                <div className="text-lg font-semibold mt-2 text-center">
+                    {basic.data.name}
+                </div>
+                
+                </div>
+            ))}
+        </div> 
+    )
 }
 
 export default Basic;
