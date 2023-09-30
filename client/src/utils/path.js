@@ -16,6 +16,7 @@ const path = {
     EMOTION: 'emotion',
     FAMILY: 'family',
     BASIC: 'basic',
+    CONTACT: 'contact'
 }
 
 export default path

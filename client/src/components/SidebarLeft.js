@@ -4,7 +4,7 @@ import path from '../utils/path';
 import icons from "../utils/icons";
 import SidebarMenu from '../utils/menu'
 
-const { VscLibrary} = icons;
+const { VscLibrary, LuContact} = icons;
 
 const notActiveStyle ='py-3 px-10 flex items-center justify-start text-[18px] hover:bg-main-100 hover:text-white transition duration-300';
 const activeStyle = 'py-3 px-10 flex items-center justify-start text-[19px] font-semibold hover:bg-main-100 hover:text-white transition duration-300';
@@ -28,7 +28,18 @@ const SidebarLeft = ({ isLoggedIn }) => {
                       <span className="ml-2">Thư viện</span>
                       
                   </NavLink>
+
+                  <NavLink
+                      to='contact'
+                      key='contact'
+                      className= {({isActive}) => isActive ? activeStyle : notActiveStyle}
+                  >
+                     <LuContact size={20} className='text-main-100' />
+                      <span className="ml-2">Liên hệ</span>
+                      
+                  </NavLink>
                   </div>
+
                     ) : null}
         </div>
     </div>

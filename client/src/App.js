@@ -1,10 +1,9 @@
 import React from "react";
 import { Public, Home, Login, Forgotpassword, Signup, Topic, Quiz, Alphabet, ChatBot} from "./containers/public";
 import { Animal, Nature, Emotion, Color, Family, Basic} from "./components";
-import { Library } from "./containers/private";
+import { Library, Private, Contact } from "./containers/private";
 import { Routes, Route } from "react-router-dom";
 import path from "./utils/path";
-import { Private} from "./containers/private";
  
 const topicList = ["Animal", "Nature", "Emotion", "Color", "Family", "Basic", ];
 function getTopicComponent(topicName) {
@@ -50,6 +49,7 @@ export default function App() {
             <Route path={path.ALPHABET} element={<Alphabet />} />
             <Route path={path.QUIZ} element={<Quiz />} />
             <Route path={path.LIBRARY} element={<Library />} />
+            <Route path={path.CONTACT} element={<Contact />} />
           </Route>
         </Routes>
       </div>

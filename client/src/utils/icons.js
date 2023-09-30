@@ -1,12 +1,14 @@
 import {AiOutlineMenu, AiOutlineUser, AiOutlineCheckCircle, AiOutlineQuestionCircle, AiOutlineClose, AiOutlineTag, AiOutlineLike, AiOutlineDislike} from 'react-icons/ai'
 import {FcMindMap} from 'react-icons/fc'
-import {BiHomeAlt2} from 'react-icons/bi'
+import {BiHomeAlt2, BiMap} from 'react-icons/bi'
 import {PiTreeStructure, PiSealQuestion} from 'react-icons/pi'
 import {BsChatRightDots} from 'react-icons/bs'
 import {HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi'
-import {MdOutlineDriveFileRenameOutline} from 'react-icons/md'
+import {MdOutlineDriveFileRenameOutline, MdDriveFileRenameOutline} from 'react-icons/md'
 import {VscLibrary} from 'react-icons/vsc'
 import {TiSortAlphabetically} from 'react-icons/ti'
+import {LuContact} from 'react-icons/lu'
+import {CgMail} from 'react-icons/cg'
 
 // import {GrClose} from 'react-icons/gr'
 import {FiSearch} from 'react-icons/fi'
@@ -30,5 +32,8 @@ const icons = {
     AiOutlineDislike,
     PiSealQuestion,
     TiSortAlphabetically,
+    LuContact, MdDriveFileRenameOutline,
+    BiMap,
+    CgMail
 }
 export default icons
