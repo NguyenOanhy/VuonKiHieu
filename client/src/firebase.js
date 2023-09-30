@@ -3,7 +3,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from  "firebase/auth";
 import { getStorage} from 'firebase/storage';
-import { getFirestore, doc, getDoc} from "firebase/firestore";
+import { getFirestore, doc, getDoc, addDoc, collection} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBiZu5NMoEFyiWzG8Gs2m3LFrPkTGpmSCA",
@@ -62,5 +62,35 @@ const getCurrentUserEmail = () => {
   }
 };
 
+//them data vao firebase
+const addDataToFirestore = async (m_name, m_content, m_image, dbName) => {
+  const minValue = 10;
+  const maxValue = 200;
+  // const randomLike = Math.floor(Math.random() * (maxValue - minValue) + minValue);
+  // const randomDislike = Math.floor(Math.random() * (maxValue - minValue) + minValue);
+  try {
+    const collectionRef = collection(db, dbName);
+    const currentTimeStamp = new Date().getTime();
+    let m_uid = null;
+    if (auth.currentUser === null) {
+      m_uid = null;
+    } else {
+      m_uid = auth.currentUser.uid;
+    }
+    const docRef = await addDoc(collectionRef, {
+      name: m_name,
+      data: m_content,
+      uid: m_uid,
+      timestamp: currentTimeStamp,
+      image: m_image
+      // tag: m_tag,
+      // like: randomLike,
+      // dislike: randomDislike
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (error) {
+    console.error("Error adding document: ", error);
+  }
+};
 
-export { storage, auth, db, getDocumentById, getCurrentUserEmail, getCurrentUser,};
+export { storage, auth, db, getDocumentById, getCurrentUserEmail, getCurrentUser, addDataToFirestore};

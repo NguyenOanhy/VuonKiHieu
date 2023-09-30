@@ -36,27 +36,30 @@ const Animal = (isLoggedIn) =>{
     }
   };
   return (
-    <div className="p-6 grid grid-cols-4 gap-6 md:gap-4">
-          {animals.map(animal => (
-            <div 
-              key={animal.id} 
-              className="outline outline-2 p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
-              onClick={() => handleItemClick(animal)} 
-            >
-              <div className="flex h-56 " 
-              style = {{ 
-                backgroundImage: `url(${animal.data.imageUrl})`, 
-                backgroundSize: 'cover', 
-                backgroundPosition: 'center', 
-                backgroundRepeat: 'no-repeat', 
-                }}
-              ></div>
-              <div className="text-lg font-semibold mt-2 text-center">
-                {animal.data.name}
+    <div>
+      <div className='flex pt-8 pb-5 text-[24px] items-center justify-center font-semibold'>Chủ đề Động vật</div>
+      <div className="p-6 grid grid-cols-4 gap-6 md:gap-4">
+            {animals.map(animal => (
+              <div 
+                key={animal.id} 
+                className="outline outline-2 p-4 rounded-lg cursor-pointer transition-transform hover:scale-105 m-6" 
+                onClick={() => handleItemClick(animal)} 
+              >
+                <div className="flex h-56 " 
+                style = {{ 
+                  backgroundImage: `url(${animal.data.imageUrl})`, 
+                  backgroundSize: 'cover', 
+                  backgroundPosition: 'center', 
+                  backgroundRepeat: 'no-repeat', 
+                  }}
+                ></div>
+                <div className="text-lg font-semibold mt-2 text-center">
+                  {animal.data.name}
+                </div>
+                
               </div>
-              
-            </div>
-        ))}
+          ))}
+      </div>\
     </div> 
   )
 }

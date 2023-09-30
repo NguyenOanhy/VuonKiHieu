@@ -77,13 +77,15 @@
 
 // export default Library;
 
-import { Fragment , useState} from 'react';
+import { Fragment , useState, useEffect} from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 import PostCard from '../../components/PostComponent/PostCard';
 import ShowCard from '../../components/PostComponent/ShowCard';
 
 const Library = () => {
-
+  const [posts, setPosts] = useState([])
   const [postList   , setPostList] = useState([ ]); 
   const addPostHandler = ( enteredContent, enteredTitle, enteredImage, enteredCategory) => { 
     console.log(enteredImage,"image");
@@ -97,14 +99,54 @@ const Library = () => {
       });
   };
 
+  useEffect(() => {
+    getPosts()
+  },)
+
+  function getPosts() {
+    const postRef = collection(db, 'Post')
+    getDocs(postRef)
+      .then(Response => {
+        const posts = Response.docs.map(doc => ({
+          data: doc.data(),
+          id: doc.id,
+        }))
+        console.log()
+        setPosts(posts) 
+      })
+      .catch(error => console.log(error.message))
+  }
  
 
   return (
     <Fragment>
        
         <PostCard addPost={addPostHandler} />
-     
-        <ShowCard newpost={postList} />
+        
+        {/* <ShowCard newpost={postList} /> */}
+        <div className="m-10 mx-auto">
+          <ul>
+            {posts.map((post) => (
+            
+              <li key={post.id} className="border border-gray-300 rounded-lg my-2 p-4">
+                <div className="flex justify-between mt-2 ">
+                  <div className="text-black">
+                    <p className="text-xl font-bold capitalize">{post.data.name}</p>
+                    {/* <p className="text-sm font-light text-gray-500">{year}-{month < 10 ? `0${month}` : `${month}`}-{date}</p> */}
+                  </div>
+                  <div className=" p-2 rounded-md">
+                    {/* <p className="text-sm font-semibold">{post.category}</p> */}
+                  </div>
+                </div>
+                <p className="text-black mt-2">{post.data.data}</p>
+                <video id="videoPlayer" width="320" height="240" controls className='border border-2px'>
+                    <source src={post.data.image} type="video/mp4" />
+                  </video>
+              </li>
+            
+          ))}
+          </ul>
+        </div>
     </Fragment>
   );
 }

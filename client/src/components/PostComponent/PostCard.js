@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addDataToFirestore } from '../../firebase';
 import Card from './Card';
 
 const PostCard = (props) => {
@@ -12,6 +13,7 @@ const PostCard = (props) => {
     if (enteredContent.trim().length === 0 || enteredTitle.trim().length === 0) {
       return;
     }
+    addDataToFirestore(enteredTitle, enteredContent, enteredImage, 'Post');
     props.addPost(enteredContent, enteredTitle, enteredImage, enteredCategory);
 
     setEnteredContent('');
@@ -19,6 +21,8 @@ const PostCard = (props) => {
     setEnteredImage('');
     setEnteredCategory('');
   };
+
+  
 
   return (
     <div className='flex items-center justify-center mt-4'>

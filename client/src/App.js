@@ -56,9 +56,9 @@ export default function App() {
             })}
 
           
-            {topicList.map((selectedTopic) => {
+            {topicList.map((selectedTopic, index) => {
               return (
-                <Route path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video topic={selectedTopic}/>} />
+                <Route key={index} path={`${path.TOPIC}/${selectedTopic}/:item`} element={<Video topic={selectedTopic}/>} />
               );
             })}
             <Route path={path.HOME} element={<Home isLoggedIn/>} />
