@@ -1,7 +1,7 @@
 import React from "react";
 import { Public, Home, Login, Forgotpassword, Signup, Topic, Quiz, Alphabet, ChatBot} from "./containers/public";
 import { Animal, Nature, Emotion, Color, Family, Basic,} from "./components";
-import { Library, Private, Contact } from "./containers/private";
+import { Library, Private, Contact, Detection } from "./containers/private";
 import { Routes, Route, useParams } from "react-router-dom";
 import path from "./utils/path";
 import Video from "./components/Video";
@@ -68,6 +68,7 @@ export default function App() {
             <Route path={path.QUIZ} element={<Quiz />} />
             <Route path={path.LIBRARY} element={<Library />} />
             <Route path={path.CONTACT} element={<Contact />} />
+            {/* <Route path={path.DETECTION} element={<Detection />} /> */}
           </Route>
         </Routes>
       </div>

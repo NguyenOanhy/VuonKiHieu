@@ -29,6 +29,16 @@ const SidebarLeft = ({ isLoggedIn }) => {
                       
                   </NavLink>
 
+                  {/* <NavLink
+                      to='detection'
+                      key='detection'
+                      className= {({isActive}) => isActive ? activeStyle : notActiveStyle}
+                  >
+                     <LuContact size={20} className='text-main-100' />
+                      <span className="ml-2">Nhận diện tay</span>
+                      
+                  </NavLink> */}
+
                   <NavLink
                       to='contact'
                       key='contact'
@@ -38,6 +48,8 @@ const SidebarLeft = ({ isLoggedIn }) => {
                       <span className="ml-2">Liên hệ</span>
                       
                   </NavLink>
+
+                  
                   </div>
 
                     ) : null}

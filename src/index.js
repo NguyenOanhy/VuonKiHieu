@@ -2,9 +2,13 @@ const express = require('express');
 const app = express();
 const { spawn } = require('child_process');
 const path = require('path');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 
 const pythonScriptChatbot = path.join(__dirname, 'chatbot.py');
+const pythonScriptDetection = path.join(__dirname, 'deploy_model.py');
 
 
 // Hàm chạy script Python và trả về kết quả thông qua Promise
@@ -58,6 +62,24 @@ app.post('/api/chatbot', async (req, res) => {
   }
 }
 )
+
+app.post('/api/detection', upload.array('videoFrames'), async (req, res) => {
+  try {
+    // Pass the received video frames to the deploy_model.py script
+    const args = ['--videoFrames'];
+
+    // Add the frame data as base64 strings to the argument list
+    req.files.forEach((file) => {
+      args.push(file.buffer.toString('base64'));
+    });
+
+    const response = await runPythonScript(pythonScriptDetection, args);
+    res.json({ processedFrames: response });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

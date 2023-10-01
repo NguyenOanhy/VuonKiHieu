@@ -16,7 +16,8 @@ const path = {
     EMOTION: 'emotion',
     FAMILY: 'family',
     BASIC: 'basic',
-    CONTACT: 'contact'
+    CONTACT: 'contact',
+    DETECTION: 'detection',
 }
 
 export default path

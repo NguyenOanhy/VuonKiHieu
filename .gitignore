@@ -6,6 +6,10 @@ client/node_modules
 /.pnp
 .pnp.js
 
+src/yolov5
+src/deploy_model.py
+src/last.pt
+
 # testing
 /coverage
 
